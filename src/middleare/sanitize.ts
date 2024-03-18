@@ -6,7 +6,7 @@ export const sanitizeMiddleware = (
   next: NextFunction
 ) => {
   const moveOn = true;
-  if (!moveOn) res.status(401).json({ error: "Sanitize error" });
-  console.log("pasa");
+  if (!moveOn) return res.status(401).json({ error: "Sanitize error" });
+  console.log("sanitizeMiddleware ---> OK");
   next();
 };

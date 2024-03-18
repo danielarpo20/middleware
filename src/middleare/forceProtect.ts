@@ -7,6 +7,6 @@ export const forceProtectMiddleware = (
 ) => {
   const moveOn = true;
   if (!moveOn) res.status(401).json({ error: "Force Protect error" });
-  console.log("pasa");
+  console.log("forceProtectMiddleware ---> OK");
   next();
 };

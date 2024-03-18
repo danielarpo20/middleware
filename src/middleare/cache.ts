@@ -7,7 +7,7 @@ export const cacheMiddleware = (
 ) => {
   const cache = true;
   if (cache) res.status(200).json({ data: cache });
-  console.log("pasa");
+  console.log("cacheMiddleware ---> OK");
 
   next();
 };
