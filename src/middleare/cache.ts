@@ -1,13 +1,18 @@
 import { NextFunction, Request, Response } from "express";
+import { getCacheResponse } from "../constants/cache";
 
 export const cacheMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
-  const cache = true;
-  if (cache) res.status(200).json({ data: cache });
-  console.log("cacheMiddleware ---> OK");
 
+  const cacheResponse = getCacheResponse(req.path, req.user.role);
+  if (cacheResponse) {
+    console.log("CacheMiddleware - Response cached ---> OK")
+    return res.status(200).json(cacheResponse.response);
+  }
+
+  console.log("CacheMiddleware ---> OK")
   next();
 };

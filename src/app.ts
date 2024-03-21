@@ -30,9 +30,10 @@ app.get(
 );
 
 app.get("/api/orders/", 
-authMiddleware, 
-sanitizeMiddleware,
 forceProtectMiddleware,
+authMiddleware, 
+cacheMiddleware,
+sanitizeMiddleware,
 orders_controller.getOrders
 );
 
